@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>초콜릿 미션</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+    }
+    .scene {
+      display: none;
+    }
+    .scene.active {
+      display: block;
+    }
+    .choices button {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .choices button:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍫 초콜릿 미션: 종성의 비밀 작전</h1>
+
+  <div id="scene1" class="scene active">
+    <p><strong>🚪 장면 1: 정문 앞</strong></p>
+    <p><em>(종성, 초콜릿 상자를 가방에 넣으며)</em></p>
+    <p>“흠, 오늘 아니면 기회가 없는데… 성훈이 어디 있지?”</p>
+    <p>선우: “형, 뭐해요 여기서?”</p>
+    <p>종성: “어? 아니야~ 그냥 바람 좀 쐬러.”</p>
+    <p>선우: “음… 수상한데.”</p>
+    <div class="choices">
+      <button onclick="goToScene('scene2_1')">사실 성훈이 한테 줄 게 있어.</button>
+      <button onclick="goToScene('scene2_2')">바람 쐬러 나왔다니까~</button>
+      <button onclick="goToScene('scene2_3')">너한텐 말 못 해.</button>
+    </div>
+  </div>
+
+  <div id="scene2_1" class="scene">
+    <p><strong>장면 2-1: 솔직히 말했을 경우</strong></p>
+    <p>선우가 웃는다. “헤에~ 초콜릿이야? 형, 그럼 내가 정원이 한테 성훈이 어디 있는지 물어볼게요!”</p>
+    <p>정원: “성훈 형이요? 오늘 체육관 갔던데.”</p>
+    <div class="choices">
+      <button onclick="goToScene('scene3_1')">체육관으로 바로 간다.</button>
+      <button onclick="goToScene('scene3_2')">선우와 같이 간다.</button>
+      <button onclick="goToScene('fail1')">정원에게 대신 전달해달라고 한다.</button>
+    </div>
+  </div>
+
+  <div id="scene3_1" class="scene">
+    <p><strong>장면 3-1: 체육관 가는 길</strong></p>
+    <p>니키: “종성 형? 무슨 일로 와요?”</p>
+    <p>종성: “어… 성훈이 좀 보러.”</p>
+    <p>니키: “지금 체육 중인데 곧 끝날 거예요.”</p>
+    <div class="choices">
+      <button onclick="goToScene('scene4_1')">주변에서 몰래 기다린다.</button>
+      <button onclick="goToScene('fail2')">들어가서 직접 찾아본다.</button>
+    </div>
+  </div>
+
+  <div id="scene4_1" class="scene">
+    <p><strong>장면 4-1: 몰래 기다리기</strong></p>
+    <p>희승: “종성아, 여기서 뭐해?”</p>
+    <p>종성: “아... 그냥... 성훈이 기다리고 있어요.”</p>
+    <p>희승: “그 초콜릿, 네가 직접 줄 거지? 지금 체육 끝났으니까 안으로 들어가 봐.”</p>
+    <div class="choices">
+      <button onclick="goToScene('success')">체육 끝나고 성훈에게 간다.</button>
+    </div>
+  </div>
+
+  <div id="fail1" class="scene">
+    <p><strong>실패 루트 1</strong></p>
+    <p>정원이 초콜릿을 받았지만 잃어버림. 종성은 나중에 이 사실을 알게 된다.</p>
+    <p><em>“아… 역시 내가 직접 줬어야 했는데.”</em></p>
+  </div>
+
+  <div id="fail2" class="scene">
+    <p><strong>실패 루트 2</strong></p>
+    <p>종성이 체육관에 무작정 들어가 선생님과 마주침. 성훈은 이미 사라짐.</p>
+    <p><em>“망했다…”</em></p>
+  </div>
+
+  <div id="success" class="scene">
+    <p><strong>🎉 성공 루트</strong></p>
+    <p>종성: “성훈아, 이거… 내가 만들었어. 받았으면 좋겠다.”</p>
+    <p>성훈: “네가 직접 만든 거야? 고마워, 종성아.”</p>
+    <p><em>초콜릿 전달 성공!</em></p>
+  </div>
+
+  <script>
+    function goToScene(id) {
+      document.querySelectorAll('.scene').forEach(scene => scene.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
